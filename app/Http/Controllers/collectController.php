@@ -32,6 +32,24 @@ class collectController extends Controller
         //return back()->with('mensaje', 'Productor agregado');
     }
 
+    public function addVehicle(Request $request){
+        $vehicle = new App\vehicles;
+        $vehicle->plate = $request->plate;
+        $vehicle->unit = $request->unit;
+        $vehicle->name = $request->name;
+        $vehicle->vehicleYear = $request->vehicleYear;
+        $vehicle->model = $request->model;
+        $vehicle->type = $request->type;
+        $vehicle->insuranceNumber = $request->insuranceNumber;
+        $vehicle->carWheel = $request->carWheel;
+        $vehicle->circulationCard = $request->circulationCard;
+        $vehicle->operational = $request->operational;
+        $vehicle->save();
+
+        return $vehicle;
+        //return back()->with('mensaje', 'Productor agregado');
+    }
+
     public function addDelivery(Request $request){
         $producers = new App\producers;
         $delivery = new App\deliveries;

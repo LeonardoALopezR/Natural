@@ -37,4 +37,5 @@ Route::group([
     Route::get('route', 'collectController@getRoute');
     Route::post('weighing', 'collectController@makeWeighing');
     Route::get('weighing', 'collectController@getWeighing');
+    Route::post('addVehicle', 'collectController@addVehicle');
 });
