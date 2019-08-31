@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "a9dfcdd0-a056-40e8-83b6-9b59bbe9a87c",
+		"name": "Laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addDelivery",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"callDate\":\"2019-08-03 00:20:22\",\n\t\"deliveredGridNumber\":20,\n\t\"producer_id\":1,\n\t\"deliveryStatus\":false,\n\t\"signature\":\"LeFirme\",\n\t\"isDelivery\":true,\n\t\"comment\":\"Ninguno\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/collect/addDelivery",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collect",
+						"addDelivery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addProducer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"municipality\":\"Miguel Hidalgo\",\n\t\"locality\":\"CDMX\",\n\t\"ground\":\"Blanda\",\n\t\"surfaceHa\":8.3,\n\t\"category\":\"Buena\",\n\t\"GPS\":\"-192\",\n\t\"variety\":\"Toda\",\n\t\"plantationFrame\":\"Alguno\",\n\t\"treesNumberHa\":22,\n\t\"estimateKgTree\":8.22,\n\t\"amountTreesZone\":4,\n\t\"estimateZone\":23,\n\t\"organicZone\":10.3,\n\t\"estimateOrganicZone\":9.2,\n\t\"lastDate\":\"2019-08-03\",\n\t\"annotations\":\"Ninguna\",\n\t\"comment\":\"Ninguno\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/collect/addProducer",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collect",
+						"addProducer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addVehicle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"plate\":\"YMC-012\",\n\t\"unit\":\"BMW\",\n\t\"name\":\"Chevy\",\n\t\"vehicleYear\":2018,\n\t\"model\":\"Chevrolet\",\n\t\"type\":\"Tw13\",\n\t\"insuranceNumber\":\"1526372\",\n\t\"carWheel\":\"17in\",\n\t\"circulationCard\":\"T23\",\n\t\"operational\":true\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/collect/addVehicle",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collect",
+						"addVehicle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addDriver",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"Leonardo\",\n\t\"lastName\":\"Lopez\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/collect/addDriver",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collect",
+						"addDriver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "makeGroup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deliveries\":[1],\n\t\"isDelivery\":true\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/collect/makeGroup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collect",
+						"makeGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getGroup",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/collect/getGroup/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collect",
+						"getGroup",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vehicleAssigment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"drivers\":1,\n\t\"vehicles\":1\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/collect/vehicleAssigment",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collect",
+						"vehicleAssigment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "route",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"group\":1,\n\t\"vehicle\":1,\n\t\"departureTime\":\"2019-08-31 04:34:44\",\n\t\"arrivalTime\":\"2019-08-31 04:34:44\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/collect/makeRoute",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collect",
+						"makeRoute"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
