@@ -12,15 +12,15 @@ class deliveries extends Model
     }
     public function collect()
     {
-        return $this->hasOne(deliveries::class);
+        return $this->hasOne(deliveries::class,'collect_id');
     }
     public function delivery()
     {
-        return $this->belongsTo(deliveries::class);
+        return $this->belongsTo(deliveries::class,'collect_id');
     }
     public function weighing()
     {
-       return $this->hasMany(weighings::class);
+       return $this->hasMany(weighings::class,'collection_id');
     }
     public function group()
     {

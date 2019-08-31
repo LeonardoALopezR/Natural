@@ -8,7 +8,7 @@ class vehicles extends Model
 {
     public function group()
     {
-       return $this->belongsToMany(groups::class,'routes','group_id','vehicle_id');
+       return $this->belongsToMany(groups::class,'routes')->withPivot('departureTime','arrivalTime')->withTimestamps();
     }
     public function driver()
     {

@@ -12,6 +12,6 @@ class groups extends Model
     }
     public function vehicle()
     {
-       return $this->belongsToMany(vehicles::class,'routes','vehicle_id','group_id');
+       return $this->belongsToMany(vehicles::class,'routes')->withPivot('departureTime','arrivalTime')->withTimestamps();
     }
 }

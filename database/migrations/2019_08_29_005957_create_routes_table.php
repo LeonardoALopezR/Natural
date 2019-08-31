@@ -15,13 +15,13 @@ class CreateRoutesTable extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('group_id')->unsigned()->index();
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->bigInteger('groups_id')->unsigned()->index();
+            $table->foreign('groups_id')->references('id')->on('groups')->onDelete('cascade');
             // $table->morphs('group');
             $table->dateTime('departureTime');
             $table->dateTime('arrivalTime');
-            $table->bigInteger('vehicle_id')->unsigned()->index();
-            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
+            $table->bigInteger('vehicles_id')->unsigned()->index();
+            $table->foreign('vehicles_id')->references('id')->on('vehicles')->onDelete('cascade');
             // $table->morphs('vehicle');
             $table->timestamps();
         });

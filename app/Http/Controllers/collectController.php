@@ -82,6 +82,19 @@ class collectController extends Controller
         return $delivery;
     }
 
+    public function addCollect(Request $request,$id){
+        $delivery = App\deliveries::findOrFail($id);
+        $delivery->returnedGridNumber = $request->returnedGridNumber;
+        $delivery->deliveryStatus = $request->deliveryStatus;
+        $delivery->isDelivery = $request->isDelivery;
+        // $delivery->collect = $request->collect;
+        // $delivery->save();
+        $delivery->collect()->save($delivery);
+        
+        // return $producer;
+        return $delivery;
+    }
+
     public function makeGroup(Request $request){
         $delivery = App\deliveries::findMany($request->deliveries);
         $group = new App\groups;
@@ -115,24 +128,38 @@ class collectController extends Controller
     }
 
     public function makeRoute(Request $request){
-        // $group = App\groups::findOrFail($request->group);
-        $vehicle = App\routes::findOrFail($request->vehicle);
-        // $vehicle->group()->attach($request->group, array('departureTime' => $request->departureTime),array('arrivalTime' => $request->arrivalTime));
+        $group = App\groups::findOrFail($request->groups);
+        $vehicle = App\vehicles::findOrFail($request->vehicles);
+        $group->vehicle()->attach($vehicle->id,['departureTime' => $request->departureTime, 'arrivalTime' => $request->arrivalTime]);
 
-        return $vehicle;
+        return $vehicle->id;
     }
 
     public function getRoute($id){
-        $routes = App\routes::findOrFail($id);
+        $group = App\groups::findOrFail($id);
         
-        return $routes;
+        return $group->vehicle;
     }
 
-    public function makeWeighing(){
+    public function makeWeighing(Request $request){
+        $weighing = new App\weighings;
+        $collect = App\deliveries::findOrFail($request->collect_id);
+        $weighing->entryWeightTime = $request->entryWeightTime;
+        $weighing->exitWeightTime = $request->exitWeightTime;
+        $weighing->emptyGridWeight = $request->emptyGridWeight;
+        $weighing->fullGridWeight = $request->fullGridWeight;
+        $weighing->fullNumber = $request->fullNumber;
+        $weighing->kg = $request->kg;
+        $weighing->comment = $request->comment;
+        $weighing->commentQ = $request->commentQ;
+        $collect->weighing()->save($weighing);
 
+        return $weighing;
     }
 
-    public function getWeighing(){
-        
+    public function getWeighing($id){
+        $collect = App\deliveries::findOrFail($id);
+
+        return $collect->weighing;
     }
 }
