@@ -50,41 +50,53 @@ class collectController extends Controller
         //return back()->with('mensaje', 'Productor agregado');
     }
 
+    public function addDriver(Request $request){
+        $driver = new App\drivers;
+        $driver->firstName = $request->firstName;
+        $driver->lastName = $request->lastName;
+        $driver->save();
+
+        return $driver;
+        //return back()->with('mensaje', 'Productor agregado');
+    }
+
     public function addDelivery(Request $request){
-        $producers = new App\producers;
+        $producer = App\producers::findOrFail($request->producer_id);
         $delivery = new App\deliveries;
         $delivery->callDate = $request->callDate;
         $delivery->deliveredGridNumber = $request->deliveredGridNumber;
         // $delivery->returnedGridNumber = $request->returnedGridNumber;
         $delivery->comment = $request->comment;
-        $delivery->producer()->attach($request->producer);
-        $delivery->producer()->sync($request->producer);
-        // $delivery->producer = $request->producer;
+        // $delivery->producer()->attach($request->producer);
+        // $delivery->producer()->sync($request->producer);
+        // $delivery->producer_id = $request->producer_id;
         $delivery->deliveryStatus = $request->deliveryStatus;
         $delivery->signature = $request->signature;
         $delivery->isDelivery = $request->isDelivery;
         // $delivery->deliverieBy()->attach($delivery->collect);
         // $delivery->collect = $request->collect;
-        $delivery->save();
+        // $delivery->save();
+        $producer->delivery()->save($delivery);
+        
+        // return $producer;
+        return $delivery;
+    }
+
+    public function makeGroup(Request $request){
+        $delivery = App\deliveries::findMany($request->deliveries);
+        $group = new App\groups;
+        $group->isDelivery=$request->isDelivery;
+        $group->save();
+        $group->delivery()->saveMany($delivery);
 
         return $delivery;
     }
 
-    public function makeList(Request $request){
-        $delivery = new App\deliveries;
-        $groups = new App\groups;
-        $groups->deliveries()->attach($request->deliveries);
-        $groups->deliveries()->sync($request->deliveries);
-        $groups->isDelivery=$request->isDelivery;
-        $groups->save();
+    public function getGroup($id){
+        $group = App\groups::findOrFail($id);
+        $delivery = $group->delivery;
 
-        return $groups;
-    }
-
-    public function getList($id){
-        $groups = App\groups::findOrFail($id);
-        
-        return $nota;
+        return $delivery;
     }
 
     public function makeRoute(Request $request){

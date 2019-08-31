@@ -31,11 +31,12 @@ Route::group([
 ], function () {
     Route::post('addProducer', 'collectController@addProducer');
     Route::post('addDelivery', 'collectController@addDelivery');
-    Route::post('list', 'collectController@makeList');
-    Route::get('list/{id}', 'collectController@getList');
+    Route::get('getGroup/{id}', 'collectController@getGroup');
     Route::post('route', 'collectController@makeRoute');
     Route::get('route', 'collectController@getRoute');
     Route::post('weighing', 'collectController@makeWeighing');
     Route::get('weighing', 'collectController@getWeighing');
     Route::post('addVehicle', 'collectController@addVehicle');
+    Route::post('addDriver', 'collectController@addDriver');
+    Route::post('makeGroup', 'collectController@makeGroup');
 });
