@@ -32,11 +32,12 @@ Route::group([
     Route::post('addProducer', 'collectController@addProducer');
     Route::post('addDelivery', 'collectController@addDelivery');
     Route::get('getGroup/{id}', 'collectController@getGroup');
-    Route::post('route', 'collectController@makeRoute');
+    Route::post('makeRoute', 'collectController@makeRoute');
     Route::get('route', 'collectController@getRoute');
     Route::post('weighing', 'collectController@makeWeighing');
     Route::get('weighing', 'collectController@getWeighing');
     Route::post('addVehicle', 'collectController@addVehicle');
     Route::post('addDriver', 'collectController@addDriver');
     Route::post('makeGroup', 'collectController@makeGroup');
+    Route::post('vehicleAssigment', 'collectController@vehicleAssigment');
 });

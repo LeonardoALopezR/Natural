@@ -99,19 +99,27 @@ class collectController extends Controller
         return $delivery;
     }
 
-    public function makeRoute(Request $request){
-        $groups = new App\groups;
-        $routes = new App\routes;
-        $vehicles = new App\vehicles;
-        $routes->group()->attach($request->group);
-        $routes->group()->sync($request->group);
-        $routes->departureTime =$request->departureTime;
-        $routes->arrivalTime =$request->arrivalTime;
-        $routes->vehicle()->attach($request->vehicle);
-        $routes->vehicle()->sync($request->vehicle);
-        $routes->save();
+    public function vehicleAssigment(Request $request){
+        $driver = App\drivers::findOrFail($request->drivers);
+        // $vehicle = App\drivers::findOrFail($request->vehicles);
+        // $driver_vehicle =new App\driver_vehicles;
 
-        return $routes;
+        // foreach($driver->vehicle as $vehicle2){
+
+        // }
+
+        $driver->vehicle()->attach($request->vehicles);
+        // $vehicle->driver()->attach($request->drivers);
+
+        return $driver;
+    }
+
+    public function makeRoute(Request $request){
+        // $group = App\groups::findOrFail($request->group);
+        $vehicle = App\routes::findOrFail($request->vehicle);
+        // $vehicle->group()->attach($request->group, array('departureTime' => $request->departureTime),array('arrivalTime' => $request->arrivalTime));
+
+        return $vehicle;
     }
 
     public function getRoute($id){
